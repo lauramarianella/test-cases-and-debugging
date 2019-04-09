@@ -34,11 +34,18 @@ function f(str) {
 
   let n = 40;//10
   let i=0;
+//Lorem ipsumos dolor sit amet consectetur adipisicing elit. Magni quisquam
+//the output would be:
+//Lorem ipsumos dolor sit amet consectetur
+//adipisicing elit. Magni quisquam
 
   let strIni = "";
   let strFin = "";
   while (i<str.length){
-    strIni = str.substr(i, n) + "\n";//first n's
+    strIni = str.substr(i, n);//first n's
+
+    if() strIni + "\n";
+
     strFin = strFin + strIni;
     strIni = str.substr(n).trim();//remaining
 
