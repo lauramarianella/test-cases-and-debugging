@@ -1,9 +1,27 @@
 let verifyEquals = require('./verify-equals.js');
 
 // we need 7 test cases.
-let inputs = [];
+let inputs = [["foo", 3]];
 
-let outputs = [];
+let outputs = ["foofoofoo"];
+
+inputs.push(['fo',3]);
+outputs.push("fofofo");
+
+inputs.push(['fo',-1]);
+outputs.push("");
+
+inputs.push(['fo',0]);
+outputs.push("");
+
+inputs.push([true,2]);
+outputs.push(undefined);
+
+inputs.push(["foo","tmp"]);
+outputs.push(undefined);
+
+inputs.push(["tmp"]);
+outputs.push(undefined);
 
 /*
 The function input is an array. The first element of the array is a string. The second is a number.
@@ -16,7 +34,26 @@ f(["foo", 3]) // "foofoofoo"
 f(["fo", 3]) // "fofofo"
 f(["foo", -1]) // ""
 */
-function f(arr) {}
+function f(arr) {
+  if(typeof arr !== 'object') return undefined; 
+  if(arr.length !== 2) return undefined;
+  if(typeof arr[0] !== 'string' || typeof arr[1] !== 'number') return undefined;
+
+
+  let times = arr[1];
+  if(times <=0) return "";
+  
+  let stringRepeated = "";
+
+  let i=0;
+  while(i < times){
+    stringRepeated = stringRepeated + arr[0];
+    i++;
+  }
+  return stringRepeated;
+}
+
+
 
 //This function runs a test. You do not need to change any code under here
 function runTest(i) {

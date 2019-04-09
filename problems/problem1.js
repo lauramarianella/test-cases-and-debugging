@@ -2,8 +2,16 @@ let verifyEquals = require('./verify-equals.js'); // this line imports the verif
 
 // we need 5 test cases. I provided 1 input
 let inputs = ['max'];
+inputs.push('1xl9');
+inputs.push('abc');
+inputs.push('xyz');
+inputs.push('reverse');
 
 let outputs = ['m'];
+outputs.push('1');
+outputs.push('a');
+outputs.push('x');
+outputs.push('r');
 
 // Make this function return the first character of the string that is passed to it. If the string does not have a first letter, return undefined
 function f(str) {
