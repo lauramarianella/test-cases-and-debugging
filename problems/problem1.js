@@ -2,20 +2,29 @@ let verifyEquals = require('./verify-equals.js'); // this line imports the verif
 
 // we need 5 test cases. I provided 1 input
 let inputs = ['max'];
-inputs.push('1xl9');
-inputs.push('abc');
-inputs.push('xyz');
-inputs.push('reverse');
-
 let outputs = ['m'];
-outputs.push('1');
+
+inputs.push('1xl9');
+outputs.push(undefined);
+
+inputs.push('abc');
 outputs.push('a');
+
+inputs.push('xyz');
 outputs.push('x');
+
+inputs.push('reverse');
 outputs.push('r');
 
 // Make this function return the first character of the string that is passed to it. If the string does not have a first letter, return undefined
 function f(str) {
-  return str.charAt(0);
+  if(typeof str !== 'string') return undefined;
+  let chr = str.charAt(0);
+ //if(typeof chr === 'string') return chr;
+
+ if (!/[^a-zA-Z]/.test(chr))  {
+   return chr;
+ }else return undefined;
 }
 
 //This function runs a test. You do not need to change any code under here
