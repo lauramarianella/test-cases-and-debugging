@@ -4,11 +4,23 @@ let verifyEquals = require('./verify-equals.js');
 let inputs = [];
 let outputs = [];
 
-// inputs.push("Lorem ipsumos dolor sit amet consectetur adipisicing elit. Magni quisquam");
-// outputs.push("Lorem ipsumos dolor sit amet consectetur\nadipisicing elit. Magni quisquam");
+//inputs.push("12345 12345 12345");
+//outputs.push("12345\n12345\n12345");
 
 inputs.push("Lorem ipsumos dolor sit amet consectetur Lorem ipsumos dolor sit amet consectetur Lorem ipsumos dolor sit amet consectetur");
 outputs.push("Lorem ipsumos dolor sit amet consectetur\nLorem ipsumos dolor sit amet consectetur\nLorem ipsumos dolor sit amet consectetur");
+
+inputs.push("Lorem ipsumos dolor sit amet consectetur adipisicing elit. Magni quisquam");
+outputs.push("Lorem ipsumos dolor sit amet consectetur\nadipisicing elit. Magni quisquam");
+
+inputs.push("");
+outputs.push("");
+
+inputs.push(true);
+outputs.push(undefined);
+
+inputs.push(["12345 12345 12345"]);
+outputs.push(undefined);
 
 /*
 Make this function return the input string wrapped to 40 characters per line. 
@@ -33,26 +45,21 @@ even though there is a space before the a in adipisicing
 */
 function f(str) {
   if (typeof str !== 'string') return undefined;
+  if (str === "") return "";
 
-  let n = 40;//10
+  let n = 40;
   let i=0;
-  let fin = 0;
 
-  let strIni = "";
-  let strFin = "";
-  while (i<str.length){
-    fin = i+n;
-    strIni = str.substring(i, fin).trim();//first n's
-    if( i+n<= str.length){
-      strIni = strIni + "\n";
-    }
-    strFin = strFin + strIni;
-    strIni = str.substring(fin).trim();//remaining
-
-    i = i + n;
+  let strTmp = str.trim();
+  let strAcc = "";
+  while (i<strTmp.length){
+    strAcc = strAcc + strTmp.substring(0, n).trim();//first n's
+    strTmp = strTmp.substring(n).trim();//remaining
+    if(strTmp !== "") strAcc = strAcc + "\n"
+    i = 0;
   }
   //console.log(strFin);
-  return strFin;
+  return strAcc;
 }
 
 //This function runs a test. You do not need to change any code under here
@@ -66,9 +73,9 @@ function runTest(i) {
 }
 
 runTest(0);
-//runTest(1);
-// runTest(2);
-// runTest(3);
-// runTest(4);
+runTest(1);
+runTest(2);
+runTest(3);
+runTest(4);
 
 console.log('All tests passed for ' + __filename);
