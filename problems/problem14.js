@@ -1,9 +1,8 @@
 let verifyEquals = require('./verify-equals.js');
 
 // we need 5 test cases.
-let inputs = [];//"123456789abc4567890"];//n=10
-
-let outputs = [];//"123456789\n12345678912"];
+let inputs = [];
+let outputs = [];
 
 inputs.push("Lorem ipsumos dolor sit amet consectetur adipisicing elit. Magni quisquam");
 outputs.push("Lorem ipsumos dolor sit amet consectetur\nadipisicing elit. Magni quisquam");
@@ -34,18 +33,14 @@ function f(str) {
 
   let n = 40;//10
   let i=0;
-//Lorem ipsumos dolor sit amet consectetur adipisicing elit. Magni quisquam
-//the output would be:
-//Lorem ipsumos dolor sit amet consectetur
-//adipisicing elit. Magni quisquam
 
   let strIni = "";
   let strFin = "";
   while (i<str.length){
-    strIni = str.substr(i, n);//first n's
-
-    if() strIni + "\n";
-
+    strIni = str.substr(i, i+n);//first n's
+    if( i+n<= str.length){
+      strIni = strIni + "\n";
+    }
     strFin = strFin + strIni;
     strIni = str.substr(n).trim();//remaining
 
@@ -64,7 +59,7 @@ function runTest(i) {
 }
 
 runTest(0);
-runTest(1);
+//runTest(1);
 // runTest(2);
 // runTest(3);
 // runTest(4);
