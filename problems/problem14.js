@@ -4,8 +4,11 @@ let verifyEquals = require('./verify-equals.js');
 let inputs = [];
 let outputs = [];
 
-inputs.push("Lorem ipsumos dolor sit amet consectetur adipisicing elit. Magni quisquam");
-outputs.push("Lorem ipsumos dolor sit amet consectetur\nadipisicing elit. Magni quisquam");
+// inputs.push("Lorem ipsumos dolor sit amet consectetur adipisicing elit. Magni quisquam");
+// outputs.push("Lorem ipsumos dolor sit amet consectetur\nadipisicing elit. Magni quisquam");
+
+inputs.push("Lorem ipsumos dolor sit amet consectetur Lorem ipsumos dolor sit amet consectetur Lorem ipsumos dolor sit amet consectetur");
+outputs.push("Lorem ipsumos dolor sit amet consectetur\nLorem ipsumos dolor sit amet consectetur\nLorem ipsumos dolor sit amet consectetur");
 
 /*
 Make this function return the input string wrapped to 40 characters per line. 
@@ -33,20 +36,22 @@ function f(str) {
 
   let n = 40;//10
   let i=0;
+  let fin = 0;
 
   let strIni = "";
   let strFin = "";
   while (i<str.length){
-    strIni = str.substr(i, i+n);//first n's
+    fin = i+n;
+    strIni = str.substring(i, fin).trim();//first n's
     if( i+n<= str.length){
       strIni = strIni + "\n";
     }
     strFin = strFin + strIni;
-    strIni = str.substr(n).trim();//remaining
+    strIni = str.substring(fin).trim();//remaining
 
     i = i + n;
   }
-  console.log(strFin);
+  //console.log(strFin);
   return strFin;
 }
 
@@ -54,7 +59,9 @@ function f(str) {
 function runTest(i) {
   if (i >= inputs.length) throw new Error('You do not have enough test cases');
   let expected = outputs[i];
+  //console.log("-" +expected +"-");
   let actual = f(inputs[i]);
+  //console.log("-" + actual + "-" );
   verifyEquals(expected, actual);
 }
 
