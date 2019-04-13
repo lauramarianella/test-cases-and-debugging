@@ -17,10 +17,8 @@ outputs.push('x');
 inputs.push('reverse');
 outputs.push('r');
 
-// Make this function return the first character of the string that is passed to it. If the string does not have a first letter, return undefined
-=======
 // Make this function return the first character of the string that is passed to it. If the string does not have a first character, return undefined
->>>>>>> 49c82c328c38586bb38fa1e6013a90e58d5f1905
+
 function f(str) {
   if(typeof str !== 'string') return undefined;
   let chr = str.charAt(0);
