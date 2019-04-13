@@ -4,7 +4,6 @@ let verifyEquals = require('./verify-equals.js'); // this line imports the verif
 let inputs = ['max'];
 let outputs = ['m'];
 
-<<<<<<< HEAD
 inputs.push('1xl9');
 outputs.push(undefined);
 
