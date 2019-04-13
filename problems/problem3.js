@@ -29,19 +29,23 @@ outputs.push(undefined);
 
 
 function f(input) {
-  var typez = typeof input;
-  if(typeof input !== 'object'){//'it is NOT array'
-    return undefined;
+  if(input.length > 0 && input.every(val => typeof val === 'number')){
+    return input.reduce((acc, curr) => acc + curr,0);
   }
+  return undefined;
+  // var typez = typeof input;
+  // if(typeof input !== 'object'){//'it is NOT array'
+  //   return undefined;
+  // }
 
-  if(input.length!== 2 ) {
-    return undefined;
-  }else{
-    if(typeof input[0] === 'number' && typeof input[1] === 'number'){
-      return input[0] + input[1];
-    }
+  // if(input.length!== 2 ) {
+  //   return undefined;
+  // }else{
+  //   if(typeof input[0] === 'number' && typeof input[1] === 'number'){
+  //     return input[0] + input[1];
+  //   }
 
-  }
+  // }
 
 }
 

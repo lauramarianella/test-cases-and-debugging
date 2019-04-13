@@ -17,15 +17,12 @@ inputs.push('abc xyz 123');
 outputs.push('3');
 
 
-// Make this function return the last letter of the string that is passed to it. If the string does not have a last letter, return undefined
-function f(str) {
-  if(str === ''){
-    return undefined;
-  }else{
-    return str.charAt(str.length-1);
-  }
+// Make this function return the last character of the string that is passed to it. If the string does not have a last character, return undefined
+if(str === ''){
+  return undefined;
+}else{
+  return str.charAt(str.length-1);
 }
-
 
 //This function runs a test. You do not need to change any code under here
 function runTest(i) {
