@@ -1,56 +1,53 @@
+/*
+https://www.codewars.com/kata/552c028c030765286c00007d
+
+IQ Test
+
+Bob is preparing to pass IQ test. The most frequent task in this test is to find out which one of the given numbers differs from the others. 
+Bob observed that one number usually differs from the others in evenness. Help Bob — to check his answers, 
+he needs a program that among the given numbers finds one that is different in evenness, and return a position of this number.
+
+! Keep in mind that your task is to help Bob solve a real IQ test, which means indexes of the elements start from 1 (not 0)
+
+##Examples :
+
+iqTest("2 4 7 8 10") => 3 // Third number is odd, while the rest of the numbers are even
+
+iqTest("1 2 1 1") => 2 // Second number is even, while the rest of the numbers are odd
+*/
+
 let verifyEquals = require('./verify-equals.js');
 
 // we need 7 test cases.
-let inputs = [["foo", 3]];
+let inputs = [];
+let outputs = [];
 
-let outputs = ["foofoofoo"];
+inputs.push("2 4 7 8 10");
+outputs.push(3);
 
-inputs.push(['fo',3]);
-outputs.push("fofofo");
-
-inputs.push(['fo',-1]);
-outputs.push("");
-
-inputs.push(['fo',0]);
-outputs.push("");
-
-inputs.push([true,2]);
-outputs.push(undefined);
-
-inputs.push(["foo","tmp"]);
-outputs.push(undefined);
-
-inputs.push(["tmp"]);
-outputs.push(undefined);
-
-/*
-The function input is an array. The first element of the array is a string. The second is a number.
-Make this function return the string repeated as many times as specified by the second element of the array. 
-If a negative number or zero is specified, return an empty string. If any invalid parameters are supplied return undefined.
-
-For example:
-
-f(["foo", 3]) // "foofoofoo"
-f(["fo", 3]) // "fofofo"
-f(["foo", -1]) // ""
-*/
-function f(arr) {
-  if(typeof arr !== 'object') return undefined; 
-  if(arr.length !== 2) return undefined;
-  if(typeof arr[0] !== 'string' || typeof arr[1] !== 'number') return undefined;
+inputs.push("1 2 1 1");
+outputs.push(2);
 
 
-  let times = arr[1];
-  if(times <=0) return "";
-  
-  let stringRepeated = "";
+function iqTest(s) {
+  let arrayNums = s.split(' ');
+  let index = 0;
+  let countEven = 0;
+  let countOdd = 0;
+  for(let i=0; i< arrayNums.length; i++){
+    if(arrayNums[i] %2 ===0 ){//isEven
+      countEven++;
+    }else{
+      countOdd++;
+    }
 
-  let i=0;
-  while(i < times){
-    stringRepeated = stringRepeated + arr[0];
-    i++;
   }
-  return stringRepeated;
+
+  if(countEven === 1){
+    s.filter(x => x%2==0);
+  }else{//odd
+    s.filter(x => x%2>0);
+  }
 }
 
 
@@ -59,15 +56,10 @@ function f(arr) {
 function runTest(i) {
   if (i >= inputs.length) throw new Error('You do not have enough test cases');
   let expected = outputs[i];
-  let actual = f(inputs[i]);
+  let actual = iqTest(inputs[i]);
   verifyEquals(expected, actual);
 }
 
 runTest(0);
 runTest(1);
-runTest(2);
-runTest(3);
-runTest(4);
-runTest(5);
-runTest(6);
 console.log('All tests passed for ' + __filename);

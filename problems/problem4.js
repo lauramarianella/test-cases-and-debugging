@@ -1,69 +1,58 @@
+/*https://www.codewars.com/kata/54ff3102c1bad923760001f3
+
+Vowel Count
+Return the number (count) of vowels in the given string.
+
+We will consider a, e, i, o, and u as vowels for this Kata.
+
+The input string will only consist of lower case letters and/or spaces.
+Fundamentals
+Strings
+Utilities*/
+
+
 let verifyEquals = require('./verify-equals.js');
 
-// we need 8 test cases. I've provided the first 2
-let inputs = [['hello', 4], ['', 2]];
+let inputs = [];
 
-let outputs = ['o', undefined];
+let outputs = [];
 
-inputs.push(['hello', 40]);
-outputs.push(undefined);
+inputs.push("Fundamentas");
+outputs.push(4);
 
-inputs.push(["string", "1"]);
-outputs.push(undefined);
+inputs.push("Strings");
+outputs.push(1);
 
-inputs.push([2, "hello hw r u"]);
-outputs.push(undefined);
-
-inputs.push([['array string'], 1]);
-outputs.push(undefined);
-
-inputs.push([true, 3]);
-outputs.push(undefined);
-
-inputs.push(['hello', -4]);
-outputs.push(undefined);
+inputs.push("Utilities");
+outputs.push(5);
 
 
-/*
-Make this function return the letter at the specified position in the string. If no such letter exists, it should return undefined.
-
-For example:
-f(["hello", 1]); // e
-f(["", 4]); // undefined
-f(["abc", 0]); // a
-
-*/
-function f(arr) {
-  if(typeof arr === 'object'){//if it is array
-    if (arr.length===2){
-      if(typeof arr[0] === 'string' && typeof arr[1] === "number"){
-        if(arr[1] <= arr[0].length && arr[1] >=0){
-          if (arr[0] === ""){
-            return undefined;
-          }
-          return arr[0].charAt(arr[1]);
-        }
-      }
+function getCount(str) {
+  str = str.toLowerCase();
+  let charStr = str.split('');
+  let vowelsCount = 0;
+  for(let i=0; i< charStr.length; i++){
+    switch(charStr[i]){
+      case 'a': vowelsCount+=1; break;
+      case 'e': vowelsCount+=1; break;
+      case 'i': vowelsCount+=1; break;
+      case 'o': vowelsCount+=1; break;
+      case 'u': vowelsCount+=1; break;
+      default:  break;
     }
   }
-
-  return undefined;
+  return vowelsCount;
 }
 
 //This function runs a test. You do not need to change any code under here
 function runTest(i) {
   if (i >= inputs.length) throw new Error('You do not have enough test cases');
   let expected = outputs[i];
-  let actual = f(inputs[i]);
+  let actual = getCount(inputs[i]);
   verifyEquals(expected, actual);
 }
 
 runTest(0);
 runTest(1);
 runTest(2);
-runTest(3);
-runTest(4);
-runTest(5);
-runTest(6);
-runTest(7);
 console.log('All tests passed for ' + __filename);
